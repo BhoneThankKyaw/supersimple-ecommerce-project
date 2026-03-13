@@ -1,33 +1,11 @@
 import React from "react";
-import "./checkout-header.css";
 import "./CheckOutPage.css";
+import { CheckOutHeader } from "./CheckOutHeader";
 export const CheckOutPage = () => {
   return (
     <>
       <title>Checkout</title>
-      <div className="checkout-header">
-        <div className="header-content">
-          <div className="checkout-header-left-section">
-            <a href="index.html">
-              <img className="logo" src="images/logo.png" />
-              <img className="mobile-logo" src="images/mobile-logo.png" />
-            </a>
-          </div>
-
-          <div className="checkout-header-middle-section">
-            Checkout (
-            <a className="return-to-home-link" href="index.html">
-              3 items
-            </a>
-            )
-          </div>
-
-          <div className="checkout-header-right-section">
-            <img src="images/icons/checkout-lock-icon.png" />
-          </div>
-        </div>
-      </div>
-
+      <CheckOutHeader />
       <div className="checkout-page">
         <div className="page-title">Review your order</div>
 
