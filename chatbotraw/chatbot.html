@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <title>ChatBot</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://cdn.jsdelivr.net"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      function ChatInput() {
+        return (
+          <>
+            <input type="text" placeholder=" Ask !!!" size="40" />
+            <button>Send</button>
+          </>
+        );
+      }
+      function ChatMessage({ message, sender }) {
+        // const message = props.message;
+        // const sender = props.sender;
+        // const {message, sender} = props;
+
+        // if (sender === "robot") {
+        //   return (
+        //     <div>
+        //       <img src="robot chatbot.png" alt="user" width="50" />
+        //       {message}
+        //     </div>
+        //   );
+        // }
+        return (
+          <div>
+            {sender === "robot" && (
+              <img src="robot chatbot.png" alt="user" width="50" />
+            )}
+            {message}
+            {sender === "user" && (
+              <img src="user chatbot.png" alt="user" width="50" />
+            )}
+          </div>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <ChatInput> </ChatInput>
+            <ChatMessage message="hello" sender="user" />
+            <ChatMessage message="helloo what can help you?" sender="robot" />
+            <ChatMessage message="can you get me today date?" sender="user" />
+            <ChatMessage message="today date is ${date}" sender="robot" />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+    </script>
+  </body>
+</html>
