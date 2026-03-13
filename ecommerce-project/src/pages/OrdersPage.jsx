@@ -55,11 +55,11 @@ export const Orders = () => {
               </div>
 
               <div className="product-actions">
-                <a href="/tracking">
+                <Link href="/tracking">
                   <button className="track-package-button button-secondary">
                     Track package
                   </button>
-                </a>
+                </Link>
               </div>
 
               <div className="product-image-container">
@@ -84,11 +84,11 @@ export const Orders = () => {
               </div>
 
               <div className="product-actions">
-                <a href="/tracking">
+                <Link to="/tracking">
                   <button className="track-package-button button-secondary">
                     Track package
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -133,11 +133,11 @@ export const Orders = () => {
               </div>
 
               <div className="product-actions">
-                <a href="/tracking">
+                <Link to="/tracking">
                   <button className="track-package-button button-secondary">
                     Track package
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
