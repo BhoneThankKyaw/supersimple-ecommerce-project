@@ -1,4 +1,5 @@
 import React from "react";
+import "./TrackingPage.css";
 
 export const TrackingPage = () => {
   return (
