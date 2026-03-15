@@ -1,7 +1,15 @@
 import "./Home.css";
 import { Header } from "../Components/Header";
 import { products } from "../../src/starting code/data/products";
+
 export function HomePages() {
+  fetch("http://localhost:3000/api/products")
+    .then((res) => {
+      res.json();
+    })
+    .then((data) => {
+      console.log(data);
+    });
   return (
     <>
       <title>Ecommerce Project</title>
