@@ -11,9 +11,11 @@ import axios from "axios";
 function App() {
   const [cart, setCart] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3000/api/cart-items").then((res) => {
-      setCart(res.data);
-    });
+    axios
+      .get("http://localhost:3000/api/cart-items?expand=product")
+      .then((res) => {
+        setCart(res.data);
+      });
   }, []);
   return (
     <>
