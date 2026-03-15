@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router";
 import "./App.css";
-import { HomePages } from "./pages/HomePages";
+import { HomePages } from "./pages/home/HomePages";
 import { CheckOutPage } from "./pages/checkout/CheckOutPage";
-import { Orders } from "./pages/OrdersPage";
+import { Orders } from "./pages/order/OrdersPage";
 import { TrackingPage } from "./pages/TrackingPage";
 import { PageNotFound } from "./pages/PageNotFound";
 import { useEffect, useState } from "react";
