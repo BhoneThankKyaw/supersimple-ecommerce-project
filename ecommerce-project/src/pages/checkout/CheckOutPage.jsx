@@ -34,7 +34,7 @@ export const CheckOutPage = ({ cart, loadCart }) => {
             loadCart={loadCart}
           />
 
-          <PaymentSummary paymentSummary={paymentSummary} />
+          <PaymentSummary loadCart={loadCart} paymentSummary={paymentSummary} />
         </div>
       </div>
     </>
