@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import React from "react";
 import { formatMoney } from "../../utils/money";
 import { DeliveryOptions } from "./DeliveryOptions";
+import axios from "axios";
 
 export const OrderSummary = ({ deliveryOptions, cart, loadCart }) => {
   return (
@@ -11,12 +12,13 @@ export const OrderSummary = ({ deliveryOptions, cart, loadCart }) => {
           let selectedDeli = deliveryOptions.find((deliOption) => {
             return deliOption.id === cartItem.deliveryOptionId;
           });
+          const deleCartItem = async () => {
+            await axios.delete(`/api/cart-items/${cartItem.productId}`);
+            await loadCart();
+          };
 
           return (
-            <div
-              key={cartItem.product.prodcutId}
-              className="cart-item-container"
-            >
+            <div key={cartItem.id} className="cart-item-container">
               <div className="delivery-date">
                 Delivery date:{" "}
                 {dayjs(selectedDeli.estimatedDeliveryTimeMs).format(
@@ -42,7 +44,10 @@ export const OrderSummary = ({ deliveryOptions, cart, loadCart }) => {
                     <span className="update-quantity-link link-primary">
                       Update
                     </span>
-                    <span className="delete-quantity-link link-primary">
+                    <span
+                      onClick={deleCartItem}
+                      className="delete-quantity-link link-primary"
+                    >
                       Delete
                     </span>
                   </div>

@@ -7,10 +7,6 @@ export const DeliveryOptions = ({ deliveryOptions, cartItem, loadCart }) => {
   return (
     <>
       {deliveryOptions.map((deliOption) => {
-        console.log(deliOption.estimatedDeliveryTimeMs);
-        console.log(
-          dayjs(deliOption.estimatedDeliveryTimeMs).format("dddd MMMM D"),
-        );
         let priceString = "Free Shipping";
         if (deliOption.priceCents > 0) {
           priceString = formatMoney(deliOption.priceCents);
