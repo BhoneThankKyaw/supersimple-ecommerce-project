@@ -4,13 +4,16 @@ import { Header } from "../../Components/Header";
 import { useEffect, useState } from "react";
 import { ProductGrid } from "./ProductGrid";
 
-export function HomePages({ cart }) {
+export function HomePages({ cart, loadCart }) {
   const [products, setProducts] = useState([]);
 
+  const loadProducts = async () => {
+    const resp = await axios.get("http://localhost:3000/api/products");
+    setProducts(resp.data);
+  };
+
   useEffect(() => {
-    axios.get("http://localhost:3000/api/products").then((res) => {
-      setProducts(res.data);
-    });
+    loadProducts();
   }, []);
 
   return (
@@ -20,7 +23,7 @@ export function HomePages({ cart }) {
       <Header cart={cart} />
 
       <div className="home-page">
-        <ProductGrid products={products}></ProductGrid>
+        <ProductGrid products={products} loadCart={loadCart}></ProductGrid>
       </div>
     </>
   );
