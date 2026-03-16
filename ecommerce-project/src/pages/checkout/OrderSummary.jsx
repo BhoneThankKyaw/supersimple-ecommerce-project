@@ -3,7 +3,7 @@ import React from "react";
 import { formatMoney } from "../../utils/money";
 import { DeliveryOptions } from "./DeliveryOptions";
 
-export const OrderSummary = ({ deliveryOptions, cart }) => {
+export const OrderSummary = ({ deliveryOptions, cart, loadCart }) => {
   return (
     <div className="order-summary">
       {deliveryOptions.length > 0 &&
@@ -13,7 +13,10 @@ export const OrderSummary = ({ deliveryOptions, cart }) => {
           });
 
           return (
-            <div key={cartItem.prodcutId} className="cart-item-container">
+            <div
+              key={cartItem.product.prodcutId}
+              className="cart-item-container"
+            >
               <div className="delivery-date">
                 Delivery date:{" "}
                 {dayjs(selectedDeli.estimatedDeliveryTimeMs).format(
@@ -52,6 +55,7 @@ export const OrderSummary = ({ deliveryOptions, cart }) => {
                   <DeliveryOptions
                     deliveryOptions={deliveryOptions}
                     cartItem={cartItem}
+                    loadCart={loadCart}
                   />
                 </div>
               </div>
