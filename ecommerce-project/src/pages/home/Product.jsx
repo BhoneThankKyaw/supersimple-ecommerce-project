@@ -6,7 +6,7 @@ export const Product = ({ product, loadCart }) => {
   const [quantity, setQuantity] = useState(1);
 
   const addToCart = async () => {
-    await axios.post("http://localhost:3000/api/cart-items", {
+    await axios.post("/api/cart-items", {
       productId: product.id,
       quantity: Number(quantity),
     });
@@ -67,7 +67,11 @@ export const Product = ({ product, loadCart }) => {
         Added
       </div>
 
-      <button onClick={addToCart} className="add-to-cart-button button-primary">
+      <button
+        onClick={addToCart}
+        className="add-to-cart-button button-primary"
+        data-testid="add-to-cart-button"
+      >
         Add to Cart
       </button>
     </div>
