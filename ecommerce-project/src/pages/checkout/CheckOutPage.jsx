@@ -23,7 +23,7 @@ export const CheckOutPage = ({ cart, loadCart }) => {
     <>
       <title>Checkout</title>
       <link rel="icon" type="image/svg+xml" href="/cart-favicon.png" />
-      <CheckOutHeader />
+      <CheckOutHeader cart={cart} />
       <div className="checkout-page">
         <div className="page-title">Review your order</div>
 

@@ -5,7 +5,8 @@ import CheckoutLockIcon from "../../assets/images/icons/checkout-lock-icon.png";
 import Logo from "../../assets/images/logo.png";
 import MobileLogo from "../../assets/images/mobile-logo.png";
 
-export const CheckOutHeader = () => {
+export const CheckOutHeader = ({ cart }) => {
+  console.log(cart);
   return (
     <>
       <div className="checkout-header">
@@ -20,7 +21,7 @@ export const CheckOutHeader = () => {
           <div className="checkout-header-middle-section">
             Checkout (
             <Link className="return-to-home-link" to="/">
-              3 items
+              {cart.length}
             </Link>
             )
           </div>

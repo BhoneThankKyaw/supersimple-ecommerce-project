@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./TrackingPage.css";
 import { Header } from "../Components/Header";
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
+import axios from "axios";
+import dayjs from "dayjs";
 
-export const TrackingPage = () => {
+export const TrackingPage = ({ cart }) => {
+  const [trackingOrder, setTrackingOrder] = useState(null);
+  const { orderId, productId } = useParams();
+
+  useEffect(() => {
+    const getTackingOrder = async () => {
+      const response = await axios.get(`api/orders/${orderId}?expand=products`);
+      setTrackingOrder(response.data);
+    };
+
+    getTackingOrder();
+  }, [orderId]);
+  if (!trackingOrder) {
+    return null;
+  }
+  console.log(trackingOrder);
+
+  const orderProduct = trackingOrder.products.find((orderProduct) => {
+    return orderProduct.productId === productId;
+  });
+
   return (
     <>
       <title>Tracking</title>
       <link rel="icon" type="image/svg+xml" href="/tracking-favicon.png" />
-      <Header />
+      <Header cart={cart} />
 
       <div className="tracking-page">
         <div className="order-tracking">
@@ -16,18 +38,16 @@ export const TrackingPage = () => {
             View all orders
           </Link>
 
-          <div className="delivery-date">Arriving on Monday, June 13</div>
-
-          <div className="product-info">
-            Black and Gray Athletic Cotton Socks - 6 Pairs
+          <div className="delivery-date">
+            Arriving on{" "}
+            {dayjs(orderProduct.estimatedDeliveryTimeMs).format("dddd, MMMM D")}
           </div>
 
-          <div className="product-info">Quantity: 1</div>
+          <div className="product-info">{orderProduct.product.name}</div>
 
-          <img
-            className="product-image"
-            src="images/products/athletic-cotton-socks-6-pairs.jpg"
-          />
+          <div className="product-info">Quantity: {orderProduct.quantity}</div>
+
+          <img className="product-image" src={orderProduct.product.image} />
 
           <div className="progress-labels-container">
             <div className="progress-label">Preparing</div>

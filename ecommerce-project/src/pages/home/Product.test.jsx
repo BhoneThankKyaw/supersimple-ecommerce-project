@@ -37,4 +37,6 @@ describe("product components", () => {
     );
     expect(screen.getByText("87")).toBeInTheDocument();
   });
+
+  it("add a product to the cart", () => {});
 });
