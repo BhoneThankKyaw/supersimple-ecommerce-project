@@ -8,8 +8,8 @@ export function HomePages({ cart, loadCart }) {
   const [products, setProducts] = useState([]);
 
   const loadProducts = async () => {
-    const resp = await axios.get("http://localhost:3000/api/products");
-    setProducts(resp.data);
+    const res = await axios.get("/api/products");
+    setProducts(res.data);
   };
 
   useEffect(() => {
