@@ -3,7 +3,7 @@ import "./CheckOutPage.css";
 import { CheckOutHeader } from "./CheckOutHeader";
 import axios from "axios";
 import { PaymentSummary } from "./PaymentSummary";
-import { OrderSummary } from "./orderSummary";
+import { OrderSummary } from "./OrderSummary";
 export const CheckOutPage = ({ cart, loadCart }) => {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState([]);
